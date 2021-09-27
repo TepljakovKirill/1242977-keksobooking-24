@@ -1,7 +1,8 @@
 function randomInteger(min, max) {
   // получить случайное число от (min-0.5) до (max+0.5)
-  if(max < min || max === min) {
-    alert('Это неправильный интервал!');
+  if( min < 0 || max < 0 ) {
+    const div = document.createElement('div');
+    div.innerHTML = "<strong>Это неправильный интервал!</strong>";
   }
   const rand = min - 0.5 + Math.random() * (max - min + 1);
   return Math.round(rand);
@@ -11,8 +12,9 @@ randomInteger(0, 4);
 
 function randomIntegerFixed(min, max, toFixed) {
   // получить случайное число от (min-0.5) до (max+0.5)
-  if(max < min || max === min) {
-    alert('Это неправильный интервал!');
+  if( min < 0 || max < 0 ) {
+    const div = document.createElement('div');
+    div.innerHTML = "<strong>Это неправильный интервал!</strong>";
   }
   const rand = min - 0.5 + Math.random() * (max - min + 1);
   return Math.round(rand).toFixed(toFixed);
