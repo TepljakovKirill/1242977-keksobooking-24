@@ -97,7 +97,7 @@ const createOffer = () => ({
   checkout: checkin[randomInteger(0, 2)],
   features: randomMeaning(features),
   description: 'Всё тут красиво и классно',
-  photos: randomFotos(photos),
+  photos: randomFotos(photos)
 });
 
 for(let i = 0; i <= 10; i++) {
