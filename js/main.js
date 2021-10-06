@@ -1,7 +1,6 @@
-// 1. Переделал featuresCurrent на function randomMeaning() (но не догадался как проверить на повтор)
-// 2. Сделал  photos: randomFotos(photos) (но пришлось добавить ещё одну функцию function randomFotos(), т.к. она уже не нужна проверка на повтор)
-// 3. Выпадает ошибка из-за  const location = {
-// 4. Так и не допёт что делать теперь с const author = { avatar: function(index) {....
+
+// 1. Выпадает ошибка из-за  const location. Переименовал на locations и добавил вывод функции в массив и заработало
+// 2. Не уверен, что правильно доделал const author = {... так ли нужно было получать значение из объекта?
 
 
 
@@ -28,7 +27,8 @@ function randomMeaning() {
     const randomValue = randomInteger(0, features.length-1);
     randomArray.push(features[randomValue]);
   }
-  return randomArray;
+  const cleanArray = new Set(randomArray);
+  return cleanArray;
 }
 
 function randomFotos() {
@@ -57,7 +57,6 @@ const photos = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/ke
 
 const author = {
   avatar: function(index) {
-
     if( index < 10 ) {
       let number = '0' + index;
       return `img/avatars/user${number}.png`;
@@ -65,9 +64,17 @@ const author = {
   }
 }
 
+const rendomNumber = randomInteger(1, 10);
+console.log(author.avatar(rendomNumber));
+
+const locations = {
+  lat: randomIntegerFixed(35.6500, 35.7000, 4),
+  lng: randomIntegerFixed(139.7000, 139.80000, 4),
+};
+
 const offer = {
   title: 'Апартаменты',
-  address: `${location.lat, location.lng}`,
+  address: [locations.lat, locations.lng],
   price: randomInteger(0, 30),
   type: type[randomInteger(0, 4)],
   rooms: randomInteger(0, 5),
@@ -79,16 +86,11 @@ const offer = {
   photos: randomFotos(photos),
 }
 
-// const location = {
-//   lat: randomIntegerFixed(35.6500, 35.7000, 4),
-//   lng: randomIntegerFixed(139.7000, 139.80000, 4),
-// };
-
 const offers = [];
 
 const createOffer = () => ({
   title: 'Апартаменты',
-  address: `${location.lat, location.lng}`,
+  address: [locations.lat, locations.lng],
   price: randomInteger(0, 30),
   type: type[randomInteger(0, 5)],
   rooms: randomInteger(0, 5),
