@@ -2,7 +2,10 @@
 // 1. Выпадает ошибка из-за  const location. Переименовал на locations и добавил вывод функции в массив и заработало
 // 2. Не уверен, что правильно доделал const author = {... так ли нужно было получать значение из объекта?
 
-
+const type = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
+const checkin = ['12:00', '13:00', '14:00'];
+const features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
+const photos = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg']
 
 function randomInteger(min, max) {
   if( min < 0 || min === max || min > max ) {
@@ -41,20 +44,6 @@ function randomFotos() {
   return randomArray;
 }
 
-const type = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
-const checkin = ['12:00', '13:00', '14:00'];
-const features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-const photos = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg']
-
-// const featuresCurrent = function(features) {
-//   let number = randomInteger(0, 5);
-//   let newNumber = randomInteger(0, 5);
-//   const featuresBlock = [];
-//   featuresBlock.push(features[number]);
-//   featuresBlock.push(features[newNumber]);
-//   return featuresBlock;
-// }
-
 const author = {
   avatar: function(index) {
     if( index < 10 ) {
@@ -65,7 +54,7 @@ const author = {
 }
 
 const rendomNumber = randomInteger(1, 10);
-console.log(author.avatar(rendomNumber));
+// console.log(author.avatar(rendomNumber));
 
 const locations = {
   lat: randomIntegerFixed(35.6500, 35.7000, 4),
@@ -99,17 +88,10 @@ const createOffer = () => ({
   checkout: checkin[randomInteger(0, 2)],
   features: randomMeaning(features),
   description: 'Всё тут красиво и классно',
-  photos: randomFotos(photos)
+  photos: randomFotos(photos),
 });
 
 for(let i = 0; i <= 10; i++) {
   offers.push(createOffer());
 }
-console.log(offers);
-
-
-
-
-
-
-
+// console.log(offers);
