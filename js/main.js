@@ -1,7 +1,4 @@
 
-// 1. Выпадает ошибка из-за  const location. Переименовал на locations и добавил вывод функции в массив и заработало
-// 2. Не уверен, что правильно доделал const author = {... так ли нужно было получать значение из объекта?
-
 const type = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
 const checkin = ['12:00', '13:00', '14:00'];
 const features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
