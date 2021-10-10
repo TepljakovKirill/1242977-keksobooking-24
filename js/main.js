@@ -42,8 +42,8 @@ function createRandomElement(countElements) {
   const randomArray = [];
   const arrayLength = randomInteger(0, countElements.length-1);
   for(let item = 0; item <= arrayLength; item++) {
-      const randomValue = randomInteger(0, countElements.length-1);
-      randomArray.push(countElements[randomValue]);
+    const randomValue = randomInteger(0, countElements.length-1);
+    randomArray.push(countElements[randomValue]);
   }
   const cleanArray = new Set(randomArray);
   return cleanArray;
@@ -53,8 +53,7 @@ function createRandomElement(countElements) {
 function author() {
   const index = randomInteger(1, 10);
   if(index < 10) {
-    const number = '0' + index;
-    return `img/avatars/user${number}.png`;
+    return `img/avatars/user0${index}.png`;
   }
   return `img/avatars/user${index}.png`;
 }
@@ -66,8 +65,8 @@ function createLocations() {
   return {
     lat: randomIntegerFixed(35.6500, 35.7000, 4),
     lng: randomIntegerFixed(139.7000, 139.80000, 4),
-  }
-};
+  };
+}
 
 const offers = [];
 
@@ -88,4 +87,4 @@ const createOffer = () => ({
 
 for(let item = 0; item <= 10; item++) {
   offers.push(createOffer());
-};
+}
