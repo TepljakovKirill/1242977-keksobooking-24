@@ -19,7 +19,6 @@ function randomIntegerFixed(min, max, toFixed) {
   const rand = min - 0.5 + Math.random() * (max - min);
   return rand.toFixed(toFixed);
 }
-
 // function randomMeaning() {
 //   const randomArray = [];
 //   const arrayLength = randomInteger(0, 5);
@@ -30,7 +29,6 @@ function randomIntegerFixed(min, max, toFixed) {
 //   const cleanArray = new Set(randomArray);
 //   return cleanArray;
 // }
-
 // function randomFotos() {
 //   const randomArray = [];
 //   const arrayLength = randomInteger(0, 2);
@@ -40,7 +38,6 @@ function randomIntegerFixed(min, max, toFixed) {
 //   }
 //   return randomArray;
 // }
-
 function createRandomElement(countElements) {
   const randomArray = [];
   const arrayLength = randomInteger(0, countElements.length-1);
@@ -51,29 +48,25 @@ function createRandomElement(countElements) {
   const cleanArray = new Set(randomArray);
   return cleanArray;
 }
-
 // const index = randomInteger(1, 10);
 // const author = (index) => (index < 10) ? `img/avatars/user0${index}.png` : `img/avatars/user${index}.png`;
-
 function author() {
   const index = randomInteger(1, 10);
   if(index < 10) {
-    let number = '0' + index;
+    const number = '0' + index;
     return `img/avatars/user${number}.png`;
   }
   return `img/avatars/user${index}.png`;
 }
-
 // const locations = {
 //   lat: randomIntegerFixed(35.6500, 35.7000, 4),
 //   lng: randomIntegerFixed(139.7000, 139.80000, 4),
 // };
-
 function createLocations() {
   return {
     lat: randomIntegerFixed(35.6500, 35.7000, 4),
     lng: randomIntegerFixed(139.7000, 139.80000, 4),
-  };
+  }
 };
 
 const offers = [];
@@ -96,4 +89,3 @@ const createOffer = () => ({
 for(let item = 0; item <= 10; item++) {
   offers.push(createOffer());
 };
-
