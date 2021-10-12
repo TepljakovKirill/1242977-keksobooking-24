@@ -39,8 +39,11 @@ function author() {
   return `img/avatars/user${index}.png`;
 }
 
-function createLocations() {
-  return 'lat: ' + randomIntegerFixed(35.6500, 35.7000, 4) + ', ' + 'lng: ' + randomIntegerFixed(139.7000, 139.80000, 4)
+const createLocations =  function() {
+  const lat = randomIntegerFixed(35.6500, 35.7000, 4);
+  const lng = randomIntegerFixed(139.7000, 139.80000, 4);
+  return lat + ' ' + lng;
+  // return 'lat: ' + randomIntegerFixed(35.6500, 35.7000, 4) + ', ' + 'lng: ' + randomIntegerFixed(139.7000, 139.80000, 4);
 }
 
 const offers = [];
