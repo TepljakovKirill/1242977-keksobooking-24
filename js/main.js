@@ -42,9 +42,9 @@ function author() {
 const createLocations =  function() {
   const lat = randomIntegerFixed(35.6500, 35.7000, 4);
   const lng = randomIntegerFixed(139.7000, 139.80000, 4);
-  return lat + ' ' + lng;
+  return `lat: ${lat}, lng: ${lng}`;
   // return 'lat: ' + randomIntegerFixed(35.6500, 35.7000, 4) + ', ' + 'lng: ' + randomIntegerFixed(139.7000, 139.80000, 4);
-}
+};
 
 const offers = [];
 
@@ -67,4 +67,4 @@ for(let item = 0; item <= 10; item++) {
   offers.push(createOffer());
 }
 
-console.log(offers);
+// console.log(offers);
