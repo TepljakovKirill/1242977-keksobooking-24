@@ -72,4 +72,3 @@ for(let item = 0; item <= 10; item++) {
   offers.push(createOffer());
 }
 
-console.log(offers);
