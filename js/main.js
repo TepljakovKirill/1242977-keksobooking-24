@@ -39,32 +39,37 @@ function author() {
   return `img/avatars/user${index}.png`;
 }
 
-const createLocations =  function() {
-  const lat = randomIntegerFixed(35.6500, 35.7000, 4);
-  const lng = randomIntegerFixed(139.7000, 139.80000, 4);
-  return `lat: ${lat}, lng: ${lng}`;
-  // return 'lat: ' + randomIntegerFixed(35.6500, 35.7000, 4) + ', ' + 'lng: ' + randomIntegerFixed(139.7000, 139.80000, 4);
+const locations = function createLocations() {
+  return {
+    lat: randomIntegerFixed(35.6500, 35.7000, 4),
+    lng: randomIntegerFixed(139.7000, 139.80000, 4),
+  };
 };
 
 const offers = [];
 
 const createOffer = () => ({
-  avatar: author(),
-  title: 'Апартаменты',
-  address: createLocations(),
-  price: randomInteger(0, 30),
-  type: type[randomInteger(0, 4)],
-  rooms: randomInteger(0, 5),
-  guests: randomInteger(0, 10),
-  checkin: checkin[randomInteger(0, 2)],
-  checkout: checkin[randomInteger(0, 2)],
-  features: createRandomElement(features),
-  description: 'Всё тут красиво и классно',
-  photos: createRandomElement(photos),
+  author: {
+    avatar: author(),
+  },
+  offer: {
+    title: 'Апартаменты',
+    address: `${locations().lat}, ${locations().lng}`,
+    price: randomInteger(0, 30),
+    type: type[randomInteger(0, 4)],
+    rooms: randomInteger(0, 5),
+    guests: randomInteger(0, 10),
+    checkin: checkin[randomInteger(0, 2)],
+    checkout: checkin[randomInteger(0, 2)],
+    features: createRandomElement(features),
+    description: 'Всё тут красиво и классно',
+    photos: createRandomElement(photos),
+  },
+  locations: locations(),
 });
 
 for(let item = 0; item <= 10; item++) {
   offers.push(createOffer());
 }
 
-// console.log(offers);
+console.log(offers);
