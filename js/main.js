@@ -1,8 +1,4 @@
-
-const type = ['palace', 'flat', 'house', 'bungalow', 'hotel'];
-const checkin = ['12:00', '13:00', '14:00'];
-const features = ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'];
-const photos = ['https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/duonguyen-8LrGtIxxa4w.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/brandon-hoogenboom-SNxQGWxZQi0.jpg', 'https://assets.htmlacademy.ru/content/intensive/javascript-1/keksobooking/claire-rendall-b6kAwr1i0Iw.jpg'];
+import {type, checkin, features, photos} from './variable.js';
 
 function randomInteger(min, max) {
   if( min < 0 || min === max || min > max ) {
@@ -71,4 +67,3 @@ const createOffer = () => ({
 for(let item = 0; item <= 10; item++) {
   offers.push(createOffer());
 }
-
