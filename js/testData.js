@@ -1,20 +1,5 @@
 import {type, checkin, features, photos} from './variable.js';
-
-function randomInteger(min, max) {
-  if( min < 0 || min === max || min > max ) {
-    return false;
-  }
-  const rand = min + Math.random() * (max + 1 - min);
-  return Math.floor(rand);
-}
-
-function randomIntegerFixed(min, max, toFixed) {
-  if( min < 0 || min === max || min > max ) {
-    return false;
-  }
-  const rand = min - 0.5 + Math.random() * (max - min);
-  return rand.toFixed(toFixed);
-}
+import {randomInteger, randomIntegerFixed} from './utilits.js';
 
 function createRandomElement(countElements) {
   const randomArray = [];
@@ -43,7 +28,6 @@ const locations = function createLocations() {
 };
 
 const offers = [];
-
 const createOffer = () => ({
   author: {
     avatar: author(),
@@ -51,7 +35,7 @@ const createOffer = () => ({
   offer: {
     title: 'Апартаменты',
     address: `${locations().lat}, ${locations().lng}`,
-    price: randomInteger(0, 30),
+    price: randomInteger(0, 5000),
     type: type[randomInteger(0, 4)],
     rooms: randomInteger(0, 5),
     guests: randomInteger(0, 10),
@@ -67,3 +51,7 @@ const createOffer = () => ({
 for(let item = 0; item <= 10; item++) {
   offers.push(createOffer());
 }
+
+export {offers};
+
+
