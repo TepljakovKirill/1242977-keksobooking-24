@@ -53,4 +53,4 @@ offers.forEach(createCard);
 
 canvas.appendChild(fragment.querySelector('.popup'));
 
-console.log(offers);
+
