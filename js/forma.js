@@ -14,8 +14,6 @@ function activeForm() {
   }
 }
 
-activeForm();
-
 function disabledForm() {
   form.classList.add('ad-form--disabled');
   for (const elem of element) {
@@ -26,5 +24,6 @@ function disabledForm() {
     elem.disabled;
   }
 }
-
 disabledForm();
+activeForm();
+
