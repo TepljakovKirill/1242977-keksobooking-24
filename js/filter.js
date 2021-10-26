@@ -5,7 +5,7 @@ function disableSelect(evt) {
   const rooms = evt.target.value;
   switch(rooms) {
     case document.querySelector('#capacity').options[0].value :
-      // alert('ok');
+      document.getElementById('capacity').options[0].prop('disabled', true);
       break;
     case document.getElementById('capacity').options[1].value :
       document.getElementById('capacity').options[1].prop('disabled', true);
