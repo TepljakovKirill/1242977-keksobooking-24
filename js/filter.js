@@ -1,7 +1,3 @@
-const selectRooms = document.querySelector('#room_number');
-disableSelect();
-selectRooms.addEventListener('change', disableSelect);
-
 function disableSelect() {
   const rooms = selectRooms.options[selectRooms.selectedIndex].value;
   const capacity = document.getElementById('capacity');
@@ -27,4 +23,6 @@ function disableSelect() {
   }
 }
 
-
+const selectRooms = document.querySelector('#room_number');
+disableSelect();
+selectRooms.addEventListener('change', disableSelect);
