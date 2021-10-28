@@ -1,23 +1,30 @@
 const selectRooms = document.querySelector('#room_number');
+disableSelect();
 selectRooms.addEventListener('change', disableSelect);
 
-function disableSelect(evt) {
-  const rooms = evt.target.value;
+function disableSelect() {
+  const rooms = selectRooms.options[selectRooms.selectedIndex].value;
+  const capacity = document.getElementById('capacity');
+  const capacityArray = Array.from(capacity.options);
+  capacityArray.map((option)=> (option.disabled.true));
+
   switch(rooms) {
-    case document.querySelector('#capacity').options[0].value :
-      document.getElementById('capacity').options[0].prop('disabled', true);
+    case '1' :
+      capacityArray.map((option) => (option.value === '1') ? option.disabled = false : option.disabled = true);
       break;
-    case document.getElementById('capacity').options[1].value :
-      document.getElementById('capacity').options[1].prop('disabled', true);
+
+    case '2' :
+      capacityArray.map((option) => (option.value === '2'|| option.value === '1') ? option.disabled = false : option.disabled = true);
       break;
-    case document.getElementById('capacity').options[2].value :
-      document.getElementById('capacity').options[2].prop('disabled', true);
+
+    case '3' :
+      capacityArray.map((option) => (option.value === '2'|| option.value === '1'|| option.value === '3') ? option.disabled = false : option.disabled = true);
       break;
-    case document.getElementById('capacity').options[3].value :
-      document.getElementById('capacity').options[3].prop('disabled', true);
+
+    case '100' :
+      capacityArray.map((option) => (option.value === 0) ? option.disabled = false : option.disabled = true);
       break;
   }
 }
 
-// код не рабочий. Много чего перепробовал, но так и не получается совладать с синхронностью работы
-// id="room_number" и id="capacity". Дай пожалуйста подсказку))
+
