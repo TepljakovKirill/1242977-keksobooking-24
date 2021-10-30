@@ -63,18 +63,30 @@ typeHouse.addEventListener('change', showPrice);
 function timeOut() {
   const timeStart = timein.value;
 
-  switch(timeStart) {
-    case '12:00' :
-      timeout.value = '12:00';
-      break;
-
-    case '13:00' :
-      timeout.value = '13:00';
-      break;
-
-    case '14:00' :
-      timeout.value = '14:00';
-      break;
+  if(timeStart === '12:00') {
+    timeout.value = '12:00';
+  }
+  if(timeStart === '13:00') {
+    timeout.value = '13:00';
+  }
+  if(timeStart === '14:00') {
+    timeout.value = '14:00';
   }
 }
+
+function timeIn() {
+  const timeEnd = timeout.value;
+
+  if(timeEnd === '12:00') {
+    timein.value = '12:00';
+  }
+  if(timeEnd === '13:00') {
+    timein.value = '13:00';
+  }
+  if(timeEnd === '14:00') {
+    timein.value = '14:00';
+  }
+}
+
 timein.addEventListener('change', timeOut);
+timeout.addEventListener('change', timeIn);
