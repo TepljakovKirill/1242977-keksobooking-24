@@ -1,4 +1,7 @@
 const selectRooms = document.querySelector('#room_number');
+const typeHouse = document.querySelector('#type');
+const timein = document.querySelector('#timein');
+const timeout = document.querySelector('#timeout');
 
 function disableSelect() {
   const rooms = selectRooms.options[selectRooms.selectedIndex].value;
@@ -27,3 +30,46 @@ function disableSelect() {
 
 disableSelect();
 selectRooms.addEventListener('change', disableSelect);
+
+function showPrice() {
+  const home = typeHouse.value;
+  const price = document.querySelector('#price');
+
+  switch(home) {
+    case 'bungalow' :
+      price.placeholder = 0;
+      price.min = 0;
+      break;
+
+    case 'flat' :
+      price.placeholder = 1000;
+      price.min = 1000;
+      break;
+
+    case 'hotel' :
+      price.placeholder = 3000;
+      price.min = 3000;
+      break;
+
+    case 'house' :
+      price.placeholder = 5000;
+      price.min = 5000;
+      break;
+
+    case 'palace' :
+      price.placeholder = 10000;
+      price.min = 10000;
+      break;
+  }
+}
+
+typeHouse.addEventListener('change', showPrice);
+
+function timeCheck(evt) {
+  const sel = evt.target;
+  timein.value = sel.options[sel.selectedIndex].value;
+  timeout.value = sel.options[sel.selectedIndex].value;
+}
+
+timein.addEventListener('change', timeCheck);
+timeout.addEventListener('change', timeCheck);
