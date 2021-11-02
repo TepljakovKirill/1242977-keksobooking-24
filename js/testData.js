@@ -22,8 +22,8 @@ function author() {
 
 const locations = function createLocations() {
   return {
-    lat: randomIntegerFixed(35.6500, 35.7000, 4),
-    lng: randomIntegerFixed(139.7000, 139.80000, 4),
+    lat: randomIntegerFixed(35.993474, 36.994474, 4),
+    lng: randomIntegerFixed(139.87562, 140.88962, 4),
   };
 };
 

@@ -1,5 +1,6 @@
 import {activeForm} from './forma.js';
-import {randomInteger} from './utilits.js';
+import {offers} from './testData.js';
+import {createCard} from './popup.js';
 
 const map = L.map('map-canvas')
   .on('load', () => {
@@ -19,7 +20,7 @@ L.tileLayer(
 
 // главный маркер
 const chiуfIcon = L.icon({
-  iconUrl: '../img/main-pin.svg',
+  iconUrl: './img/main-pin.svg',
   iconSize: [52, 52],
   iconAnchor: [26, 52],
 });
@@ -41,42 +42,23 @@ chiуfMarker.on('moveend', (evt) => {
   document.querySelector('#address').value = evt.target.getLatLng();
 });
 
-const points = [
-  {
-    title: 'Уютное гнездышко для молодоженов',
-    lat: 59.96925,
-    lng: 30.31730,
-  },
-];
-
-const createCustomPopup = (point) => {
-  const balloonTemplate = document.querySelector('#card').content.querySelector('.popup');
-  const popupElement = balloonTemplate.cloneNode(true);
-
-  popupElement.querySelector('.popup__title').textContent = point.title;
-
-  return popupElement;
-};
-
 // функция создания обычного маркера
-function createMarker() {
+function createMarker(adv) {
   const normalIcon = L.icon({
-    iconUrl: '../img/pin.svg',
+    iconUrl: './img/pin.svg',
     iconSize: [40, 40],
     iconAnchor: [20, 50],
   });
 
   const normalMarker = L.marker(
+    adv.locations,
     {
-      lat: randomInteger(35.6500, 35.7000),
-      lng: randomInteger(139.7000, 139.80000),
-    },
-    {
-      draggable: true,
       icon: normalIcon,
     },
   );
 
-  normalMarker.addTo(map).bindPopup(createCustomPopup(points));
+  normalMarker.addTo(map).bindPopup(createCard(adv));
 }
-createMarker();
+
+offers.forEach(createMarker);
+
