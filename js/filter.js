@@ -54,6 +54,7 @@ function showPrice() {
     case 'house' :
       price.placeholder = 5000;
       price.min = 5000;
+
       break;
 
     case 'palace' :
@@ -64,6 +65,7 @@ function showPrice() {
 }
 
 typeHouse.addEventListener('change', showPrice);
+
 
 function timeCheck(evt) {
   const sel = evt.target;
