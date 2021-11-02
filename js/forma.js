@@ -25,5 +25,7 @@ function disabledForm() {
   }
 }
 disabledForm();
-activeForm();
+
+export {activeForm};
+
 

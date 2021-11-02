@@ -2,7 +2,7 @@ import {offers} from './testData.js';
 
 const fragment = document.createDocumentFragment();
 
-const canvas = document.querySelector('#map-canvas');
+// const canvas = document.querySelector('#map-canvas');
 
 const card = document.querySelector('#card').content;
 const popup = card.querySelector('.popup');
@@ -51,5 +51,5 @@ const createCard = (adv) => {
 
 offers.forEach(createCard);
 
-canvas.appendChild(fragment.querySelector('.popup'));
+// canvas.appendChild(fragment.querySelector('.popup'));
 
