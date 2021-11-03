@@ -38,55 +38,40 @@ function showPrice() {
   switch(home) {
     case 'bungalow' :
       price.placeholder = 0;
+      price.min = 0;
       break;
 
     case 'flat' :
       price.placeholder = 1000;
+      price.min = 1000;
       break;
 
     case 'hotel' :
       price.placeholder = 3000;
+      price.min = 3000;
       break;
 
     case 'house' :
       price.placeholder = 5000;
+      price.min = 5000;
+
       break;
 
     case 'palace' :
       price.placeholder = 10000;
+      price.min = 10000;
       break;
   }
 }
 
 typeHouse.addEventListener('change', showPrice);
 
-function timeOut() {
-  const timeStart = timein.value;
 
-  if(timeStart === '12:00') {
-    timeout.value = '12:00';
-  }
-  if(timeStart === '13:00') {
-    timeout.value = '13:00';
-  }
-  if(timeStart === '14:00') {
-    timeout.value = '14:00';
-  }
+function timeCheck(evt) {
+  const sel = evt.target;
+  timein.value = sel.options[sel.selectedIndex].value;
+  timeout.value = sel.options[sel.selectedIndex].value;
 }
 
-function timeIn() {
-  const timeEnd = timeout.value;
-
-  if(timeEnd === '12:00') {
-    timein.value = '12:00';
-  }
-  if(timeEnd === '13:00') {
-    timein.value = '13:00';
-  }
-  if(timeEnd === '14:00') {
-    timein.value = '14:00';
-  }
-}
-
-timein.addEventListener('change', timeOut);
-timeout.addEventListener('change', timeIn);
+timein.addEventListener('change', timeCheck);
+timeout.addEventListener('change', timeCheck);
