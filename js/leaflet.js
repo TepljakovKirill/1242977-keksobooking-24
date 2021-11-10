@@ -4,12 +4,6 @@ import {activeForm} from './forma.js';
 import {createCard} from './popup.js';
 import {createLoader} from './load.js';
 
-const getOffers = (data) => data.forEach(createMarker);
-// const getError = (error) => console.log(error);
-
-const load = createLoader(getOffers);
-load();
-
 const map = L.map('map-canvas')
   .on('load', () => {
     activeForm();
@@ -67,4 +61,10 @@ function createMarker(adv) {
 
   normalMarker.addTo(map).bindPopup(createCard(adv));
 }
+
+const getOffers = (data) => data.forEach(createMarker);
+// const getError = (error) => console.log(error);
+
+const load = createLoader(getOffers);
+load();
 
