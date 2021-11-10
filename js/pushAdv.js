@@ -53,7 +53,7 @@ document.addEventListener('click', (evt) => {
   }
 });
 
-const setUserFormSubmit = (onSuccess, onError) => {
+const setUserFormSubmit = () => {
   const keksoForm = document.querySelector('.ad-form');
   keksoForm.addEventListener('submit', (evt) => {
     evt.preventDefault();

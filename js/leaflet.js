@@ -7,7 +7,7 @@ import {createLoader} from './load.js';
 const getOffers = (data) => data.forEach(createMarker);
 // const getError = (error) => console.log(error);
 
-const load = createLoader(getOffers, getError);
+const load = createLoader(getOffers);
 load();
 
 const map = L.map('map-canvas')
