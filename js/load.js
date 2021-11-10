@@ -1,5 +1,5 @@
-const createLoader = (onSuccess, onError) => () => {
-  return fetch(
+const createLoader = (onSuccess, onError) => () => (
+  fetch(
     'https://24.javascript.pages.academy/keksobooking/data',
     {
       method: 'GET',
@@ -18,8 +18,8 @@ const createLoader = (onSuccess, onError) => () => {
     })
     .catch((err) => {
       onError(err);
-    });
-};
+    })
+);
 
 export {createLoader};
 
