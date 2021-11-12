@@ -1,6 +1,8 @@
+
 import {activeForm} from './forma.js';
-import {offers} from './testData.js';
+// import {offers} from './testData.js';
 import {createCard} from './popup.js';
+import {createLoader} from './load.js';
 
 const map = L.map('map-canvas')
   .on('load', () => {
@@ -24,7 +26,7 @@ const chiуfIcon = L.icon({
   iconSize: [52, 52],
   iconAnchor: [26, 52],
 });
-
+//
 const chiуfMarker = L.marker(
   {
     lat: 35.689649,
@@ -51,7 +53,7 @@ function createMarker(adv) {
   });
 
   const normalMarker = L.marker(
-    adv.locations,
+    adv.location,
     {
       icon: normalIcon,
     },
@@ -60,5 +62,12 @@ function createMarker(adv) {
   normalMarker.addTo(map).bindPopup(createCard(adv));
 }
 
-offers.forEach(createMarker);
+const getOffers = (data) => data.forEach(createMarker);
+// const getError = (error) => console.log(error);
+
+const load = createLoader(getOffers);
+load();
+
+export { chiуfMarker, map };
+
 

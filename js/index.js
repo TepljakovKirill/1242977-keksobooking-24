@@ -5,4 +5,5 @@ import './popup.js';
 import './forma.js';
 import './filter.js';
 import './leaflet.js';
-
+import './load.js';
+import './pushAdv.js';
