@@ -26,7 +26,7 @@ const chiуfIcon = L.icon({
   iconSize: [52, 52],
   iconAnchor: [26, 52],
 });
-
+//
 const chiуfMarker = L.marker(
   {
     lat: 35.689649,
@@ -67,4 +67,7 @@ const getOffers = (data) => data.forEach(createMarker);
 
 const load = createLoader(getOffers);
 load();
+
+export { chiуfMarker, map };
+
 

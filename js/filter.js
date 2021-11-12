@@ -30,7 +30,6 @@ function disableSelect() {
 
 disableSelect();
 selectRooms.addEventListener('change', disableSelect);
-
 function showPrice() {
   const home = typeHouse.value;
   const price = document.querySelector('#price');
@@ -75,3 +74,6 @@ function timeCheck(evt) {
 
 timein.addEventListener('change', timeCheck);
 timeout.addEventListener('change', timeCheck);
+
+document.querySelector('#address').disabled = 'true';
+

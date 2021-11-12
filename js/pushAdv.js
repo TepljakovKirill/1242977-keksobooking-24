@@ -1,3 +1,4 @@
+import { chiуfMarker, map } from './leaflet.js';
 // форма без ошибок
 function onSuccess() {
   const successFragment = document.querySelector('#success').content;
@@ -5,6 +6,15 @@ function onSuccess() {
   const messageOk = success.cloneNode(true);
   document.body.appendChild(messageOk);
   const myForm = document.querySelector('.ad-form');
+  chiуfMarker.setLatLng(
+    {
+      lat: 35.689649,
+      lng: 139.76944,
+    });
+  document.querySelector('#address').value = chiуfMarker.getLatLng();
+  // скрывает баллун
+  map.closePopup();
+  //очищаем форму
   myForm.reset();
 }
 
@@ -12,14 +22,14 @@ function onSuccess() {
 document.addEventListener('click', (evt) => {
   const success = document.querySelector('.success');
   if(evt.target === success) {
-    success.style.display='none';
+    success.remove();
   }
 });
 // функция удаления объявления по кнопке Esc
 document.addEventListener('keydown', (evt)=> {
   if(evt.key === 'Escape') {
     const success = document.querySelector('.success');
-    success.style.display='none';
+    success.remove();
   }
 });
 // форма с ошибкой
@@ -34,7 +44,7 @@ document.addEventListener('click', (evt) => {
   const errorButton = document.querySelector('.error__button');
   const error = document.querySelector('.error');
   if(evt.target === errorButton || evt.target === error) {
-    error.style.display='none';
+    error.remove();
   }
 });
 // функция удаления объявления с ошибкой по кнопке Esc
