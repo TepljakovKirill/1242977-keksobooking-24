@@ -7,3 +7,4 @@ import './filter.js';
 import './leaflet.js';
 import './load.js';
 import './pushAdv.js';
+import './filterAdv.js';

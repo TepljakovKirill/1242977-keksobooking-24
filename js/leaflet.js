@@ -1,9 +1,10 @@
-
 import {activeForm} from './forma.js';
-// import {offers} from './testData.js';
 import {createCard} from './popup.js';
 import {createLoader} from './load.js';
+import {hundlerFilter} from './filterAdv.js';
 
+//фильтрация
+const mapFilters = document.querySelector('.map__filters');
 const map = L.map('map-canvas')
   .on('load', () => {
     activeForm();
@@ -43,6 +44,8 @@ chiуfMarker.addTo(map);
 chiуfMarker.on('moveend', (evt) => {
   document.querySelector('#address').value = evt.target.getLatLng();
 });
+//Слой маркеров
+const markerGroup = L.layerGroup().addTo(map);
 
 // функция создания обычного маркера
 function createMarker(adv) {
@@ -58,16 +61,25 @@ function createMarker(adv) {
       icon: normalIcon,
     },
   );
-
-  normalMarker.addTo(map).bindPopup(createCard(adv));
+  normalMarker
+    .addTo(markerGroup)
+    .bindPopup(createCard(adv));
 }
 
-const getOffers = (data) => data.forEach(createMarker);
-// const getError = (error) => console.log(error);
+const drowMarker = (result) => {
+  markerGroup.clearLayers();
+  result.forEach(createMarker);
+};
+
+const getOffers = (data) => {
+  mapFilters.addEventListener('click', (evt) => hundlerFilter(evt, data));
+  drowMarker(data.slice(0,10));
+};
+
 
 const load = createLoader(getOffers);
 load();
 
-export { chiуfMarker, map };
+export { chiуfMarker, map, drowMarker};
 
 
