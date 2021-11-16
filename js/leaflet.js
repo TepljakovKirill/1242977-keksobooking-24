@@ -66,20 +66,20 @@ function createMarker(adv) {
     .bindPopup(createCard(adv));
 }
 
-const drowMarker = (result) => {
+const drowMarkers = (result) => {
   markerGroup.clearLayers();
   result.forEach(createMarker);
 };
 
 const getOffers = (data) => {
   mapFilters.addEventListener('click', (evt) => hundlerFilter(evt, data));
-  drowMarker(data.slice(0,10));
+  drowMarkers(data.slice(0,10));
 };
 
 
 const load = createLoader(getOffers);
 load();
 
-export { chiуfMarker, map, drowMarker};
+export { chiуfMarker, map, drowMarkers};
 
 
