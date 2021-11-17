@@ -72,6 +72,7 @@ function filterAdv(data, filterArr) {
   drowMarkers(resultData.slice(0,10));
   return resultData;
 }
+const debounceFliterAdv = debounce((data)=>filterAdv(data, filter),1000);
 
 function hundlerFilter(evt, data) {
   const currentElement = evt.target;
@@ -94,6 +95,6 @@ function hundlerFilter(evt, data) {
       filter.features.delete(currentElement.previousElementSibling.value);
     }
   }
-  debounce(filterAdv(data, filter));
+  debounceFliterAdv(data, filter);
 }
 export {hundlerFilter};
