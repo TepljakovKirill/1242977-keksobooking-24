@@ -1,7 +1,8 @@
-import {activeForm} from './forma.js';
-import {createCard} from './popup.js';
-import {createLoader} from './load.js';
-import {hundlerFilter} from './filterAdv.js';
+import { activeForm } from './forma.js';
+import { createCard } from './popup.js';
+import { createLoader } from './load.js';
+import { hundlerFilter } from './filterAdv.js';
+import { activeFilter } from './forma.js';
 
 //фильтрация
 const mapFilters = document.querySelector('.map__filters');
@@ -74,6 +75,7 @@ const drowMarkers = (result) => {
 const getOffers = (data) => {
   mapFilters.addEventListener('click', (evt) => hundlerFilter(evt, data));
   drowMarkers(data.slice(0,10));
+  activeFilter();
 };
 
 

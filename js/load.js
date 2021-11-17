@@ -1,3 +1,5 @@
+import { disabledFilter } from './forma.js';
+
 const createLoader = (onSuccess, onError) => () => (
   fetch(
     'https://24.javascript.pages.academy/keksobooking/data',
@@ -18,6 +20,7 @@ const createLoader = (onSuccess, onError) => () => (
     })
     .catch((err) => {
       onError(err);
+      disabledFilter();
     })
 );
 

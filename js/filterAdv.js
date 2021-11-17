@@ -1,4 +1,6 @@
+import { debounce } from './utils/debounce.js';
 import { drowMarkers } from './leaflet.js';
+
 const filter = {};
 filter.features = new Set();
 
@@ -92,6 +94,6 @@ function hundlerFilter(evt, data) {
       filter.features.delete(currentElement.previousElementSibling.value);
     }
   }
-  filterAdv(data, filter);
+  debounce(filterAdv(data, filter));
 }
 export {hundlerFilter};
