@@ -1,4 +1,4 @@
-import { drowMarker } from './leaflet.js';
+import { drowMarkers } from './leaflet.js';
 const filter = {};
 filter.features = new Set();
 
@@ -67,7 +67,7 @@ function filtredArr(adv, filterArr) {
 
 function filterAdv(data, filterArr) {
   const resultData = data.filter((adv) => filtredArr(adv, filterArr));
-  drowMarker(resultData.slice(0,10));
+  drowMarkers(resultData.slice(0,10));
   return resultData;
 }
 
