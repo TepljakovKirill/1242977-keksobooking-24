@@ -1,4 +1,4 @@
-import { chiуfMarker, map } from './leaflet.js';
+import { clearMarker, map } from './leaflet.js';
 // форма без ошибок
 function onSuccess() {
   const successFragment = document.querySelector('#success').content;
@@ -6,16 +6,11 @@ function onSuccess() {
   const messageOk = success.cloneNode(true);
   document.body.appendChild(messageOk);
   const myForm = document.querySelector('.ad-form');
-  chiуfMarker.setLatLng(
-    {
-      lat: 35.689649,
-      lng: 139.76944,
-    });
-  document.querySelector('#address').value = chiуfMarker.getLatLng();
   // скрывает баллун
   map.closePopup();
   //очищаем форму
   myForm.reset();
+  clearMarker();
 }
 
 // функция удаления объявления по клику
@@ -58,8 +53,10 @@ document.addEventListener('keydown', (evt)=> {
 document.addEventListener('click', (evt) => {
   const reset = document.querySelector('.ad-form__reset');
   if(evt.target === reset) {
+    evt.preventDefault();
     const myForm = document.querySelector('.ad-form');
     myForm.reset();
+    clearMarker();
   }
 });
 

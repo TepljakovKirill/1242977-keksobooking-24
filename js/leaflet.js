@@ -1,8 +1,15 @@
 import { activeForm } from './forma.js';
 import { createCard } from './popup.js';
 import { createLoader } from './load.js';
-import { hundlerFilter } from './filterAdv.js';
+import { getFilterCheck } from './filter-adv.js';
 import { activeFilter } from './forma.js';
+
+const CENTER = {
+  lat: 35.689649,
+  lng: 139.76944,
+};
+
+const address = document.querySelector('#address');
 
 //фильтрация
 const mapFilters = document.querySelector('.map__filters');
@@ -30,20 +37,18 @@ const chiуfIcon = L.icon({
 });
 //
 const chiуfMarker = L.marker(
-  {
-    lat: 35.689649,
-    lng: 139.76944,
-  },
+  CENTER,
   {
     draggable: true,
     icon: chiуfIcon,
   },
 );
+const centerString = chiуfMarker.getLatLng();
 
 chiуfMarker.addTo(map);
 
 chiуfMarker.on('moveend', (evt) => {
-  document.querySelector('#address').value = evt.target.getLatLng();
+  address.value = evt.target.getLatLng();
 });
 //Слой маркеров
 const markerGroup = L.layerGroup().addTo(map);
@@ -67,13 +72,20 @@ function createMarker(adv) {
     .bindPopup(createCard(adv));
 }
 
+const clearMarker = () => {
+  chiуfMarker.setLatLng(CENTER);
+  address.value = centerString;
+};
+
+clearMarker();
+
 const drowMarkers = (result) => {
   markerGroup.clearLayers();
   result.forEach(createMarker);
 };
 
 const getOffers = (data) => {
-  mapFilters.addEventListener('click', (evt) => hundlerFilter(evt, data));
+  mapFilters.addEventListener('click', (evt) => getFilterCheck(evt, data));
   drowMarkers(data.slice(0,10));
   activeFilter();
 };
@@ -82,6 +94,6 @@ const getOffers = (data) => {
 const load = createLoader(getOffers);
 load();
 
-export { chiуfMarker, map, drowMarkers};
+export { clearMarker, map, drowMarkers};
 
 

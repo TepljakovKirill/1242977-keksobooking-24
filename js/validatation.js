@@ -2,34 +2,31 @@ const selectRooms = document.querySelector('#room_number');
 const typeHouse = document.querySelector('#type');
 const timein = document.querySelector('#timein');
 const timeout = document.querySelector('#timeout');
+const capacitySelect = document.querySelector('#capacity');
+const roomsSelect = document.querySelector('#room_number');
+const capacityArray = Array.from(capacitySelect.options);
 
-function disableSelect() {
-  const rooms = selectRooms.options[selectRooms.selectedIndex].value;
-  const capacity = document.getElementById('capacity');
-  const capacityArray = Array.from(capacity.options);
-  capacityArray.map((option)=> (option.disabled.true));
+function disableCapacity () {
+  const rooms = roomsSelect.options[selectRooms.selectedIndex].value;
+  capacityArray.map((option)=> option.disabled = true);
 
-  switch(rooms) {
-    case '1' :
-      capacityArray.map((option) => (option.value === '1') ? option.disabled = false : option.disabled = true);
-      break;
-
-    case '2' :
-      capacityArray.map((option) => (option.value === '2'|| option.value === '1') ? option.disabled = false : option.disabled = true);
-      break;
-
-    case '3' :
-      capacityArray.map((option) => (option.value === '2'|| option.value === '1'|| option.value === '3') ? option.disabled = false : option.disabled = true);
-      break;
-
-    case '100' :
-      capacityArray.map((option) => (option.value === 0) ? option.disabled = false : option.disabled = true);
-      break;
-  }
+  capacityArray.map((option) => {
+    if(rooms < option.value ||
+      (rooms > option.value) && rooms === '100' && option.value !== '0' ||
+      (rooms > option.value) && rooms !== '100' && option.value === '0') {
+      option.disabled = true;
+    } else { option.disabled = false; }
+  });
+  if(capacitySelect.options[capacitySelect.selectedIndex].disabled){
+    capacitySelect.setCustomValidity('Выберите допустимое значение');
+  } else {capacitySelect.setCustomValidity('');}
 }
 
-disableSelect();
-selectRooms.addEventListener('change', disableSelect);
+disableCapacity();
+
+selectRooms.addEventListener('change', disableCapacity);
+capacitySelect.addEventListener('change', disableCapacity);
+
 function showPrice() {
   const home = typeHouse.value;
   const price = document.querySelector('#price');
@@ -62,18 +59,17 @@ function showPrice() {
       break;
   }
 }
-
+showPrice();
 typeHouse.addEventListener('change', showPrice);
 
 
-function timeCheck(evt) {
+function timeChangeHandler(evt) {
   const sel = evt.target;
   timein.value = sel.options[sel.selectedIndex].value;
   timeout.value = sel.options[sel.selectedIndex].value;
 }
 
-timein.addEventListener('change', timeCheck);
-timeout.addEventListener('change', timeCheck);
+timein.addEventListener('change', timeChangeHandler);
+timeout.addEventListener('change', timeChangeHandler);
 
-document.querySelector('#address').disabled = 'true';
-
+document.querySelector('#address').readOnly = 'true';

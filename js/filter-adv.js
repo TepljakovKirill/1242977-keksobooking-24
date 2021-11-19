@@ -48,11 +48,11 @@ function filtredArr(adv, filterArr) {
                 }
                 break;
               case 'middle':
-                if (offer[key] > 50000) {
+                if (offer[key] > 50000 || offer[key] < 10000) {
                   return false;
                 }
                 break;
-              case 'hight':
+              case 'high':
                 if (offer[key] < 50000) {
                   return false;
                 }
@@ -74,14 +74,14 @@ function filterAdv(data, filterArr) {
 }
 const debounceFliterAdv = debounce((data)=>filterAdv(data, filter),1000);
 
-function hundlerFilter(evt, data) {
+function getFilterCheck(evt, data) {
   const currentElement = evt.target;
 
   if (currentElement.matches('select')) {
     const name = evt.target.name.replace('housing-','');
     currentElement.addEventListener(
       'change',
-      () => (
+      () => filter[name] = evt.target.value, (
         filter[name] = evt.target.value
       ),
       {once: true},
@@ -97,4 +97,4 @@ function hundlerFilter(evt, data) {
   }
   debounceFliterAdv(data, filter);
 }
-export {hundlerFilter};
+export {getFilterCheck};
