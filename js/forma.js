@@ -3,34 +3,35 @@ const element = document.querySelectorAll('.ad-form__element');
 const filters = document.querySelector('.map__filters');
 const filter = document.querySelectorAll('.map__filter');
 
-function activeFilter() {
+const activeFilter = () => {
   filters.classList.remove('ad-form--disabled');
   for (const elem of filter) {
     elem.removeAttribute('disabled');
   }
-}
+};
 
-function disabledFilter() {
+const getDisablingFilter = () => {
   filters.classList.add('ad-form--disabled');
   for (const elem of filter) {
     elem.disabled;
   }
-}
+};
 
-function activeForm() {
+const getActivateForm = () => {
   form.classList.remove('ad-form--disabled');
   for (const elem of element) {
     elem.removeAttribute('disabled');
   }
-}
+};
 
-function disabledForm() {
+const getDisabledForm = () => {
   form.classList.add('ad-form--disabled');
   for (const elem of element) {
     elem.disabled;
   }
-}
-disabledForm();
-disabledFilter();
+};
 
-export {activeForm, activeFilter, disabledFilter};
+getDisabledForm();
+getDisablingFilter();
+
+export {getActivateForm, activeFilter, getDisablingFilter};

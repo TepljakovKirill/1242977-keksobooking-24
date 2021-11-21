@@ -1,5 +1,3 @@
-
-import './utilits.js';
 import './popup.js';
 import './forma.js';
 import './validatation.js';

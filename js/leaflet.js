@@ -1,4 +1,4 @@
-import { activeForm } from './forma.js';
+import { getActivateForm } from './forma.js';
 import { createCard } from './popup.js';
 import { createLoader } from './load.js';
 import { getFilterCheck } from './filter-adv.js';
@@ -15,7 +15,7 @@ const address = document.querySelector('#address');
 const mapFilters = document.querySelector('.map__filters');
 const map = L.map('map-canvas')
   .on('load', () => {
-    activeForm();
+    getActivateForm();
   })
   .setView({
     lat: 35.6895,
@@ -54,7 +54,7 @@ chiуfMarker.on('moveend', (evt) => {
 const markerGroup = L.layerGroup().addTo(map);
 
 // функция создания обычного маркера
-function createMarker(adv) {
+const createMarker = (adv) => {
   const normalIcon = L.icon({
     iconUrl: './img/pin.svg',
     iconSize: [40, 40],
@@ -70,7 +70,7 @@ function createMarker(adv) {
   normalMarker
     .addTo(markerGroup)
     .bindPopup(createCard(adv));
-}
+};
 
 const clearMarker = () => {
   chiуfMarker.setLatLng(CENTER);
@@ -79,14 +79,14 @@ const clearMarker = () => {
 
 clearMarker();
 
-const drowMarkers = (result) => {
+const getSelectMarkers = (result) => {
   markerGroup.clearLayers();
   result.forEach(createMarker);
 };
 
 const getOffers = (data) => {
   mapFilters.addEventListener('click', (evt) => getFilterCheck(evt, data));
-  drowMarkers(data.slice(0,10));
+  getSelectMarkers(data.slice(0,10));
   activeFilter();
 };
 
@@ -94,6 +94,6 @@ const getOffers = (data) => {
 const load = createLoader(getOffers);
 load();
 
-export { clearMarker, map, drowMarkers};
+export { clearMarker, map, getSelectMarkers};
 
 

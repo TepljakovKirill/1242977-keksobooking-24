@@ -1,4 +1,3 @@
-
 const card = document.querySelector('#card').content;
 const popup = card.querySelector('.popup');
 
@@ -25,17 +24,18 @@ const createCard = (adv) => {
   }
 
   const priceNight = ' ₽/ночь';
+  const popupType = currentPopup.querySelector('.popup__type');
   if(adv.offer.price) {
     currentPopup.querySelector('.popup__text--price').textContent = adv.offer.price + priceNight;
   } else {
     currentPopup.querySelector('.popup__text--price').classList.add('hidden');
   }
   if(adv.offer.type) {
-    currentPopup.querySelector('.popup__type').textContent = adv.offer.type;
+    popupType.textContent = adv.offer.type;
   } else {
-    currentPopup.querySelector('.popup__type').classList.add('hidden');
+    popupType.classList.add('hidden');
   }
-  currentPopup.querySelector('.popup__type').textContent = typeMap.get(adv.offer.type);
+  popupType.textContent = typeMap.get(adv.offer.type);
 
   const room = ' комнаты для ';
   const guest = ' гостей';

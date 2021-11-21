@@ -1,4 +1,4 @@
-import { disabledFilter } from './forma.js';
+import { getDisablingFilter } from './forma.js';
 
 const createLoader = (onSuccess, onError) => () => (
   fetch(
@@ -20,7 +20,7 @@ const createLoader = (onSuccess, onError) => () => (
     })
     .catch((err) => {
       onError(err);
-      disabledFilter();
+      getDisablingFilter();
     })
 );
 

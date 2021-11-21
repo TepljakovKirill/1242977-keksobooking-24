@@ -28,7 +28,7 @@ document.addEventListener('keydown', (evt)=> {
   }
 });
 // форма с ошибкой
-function onError() {
+const onError = () => {
   const errorFragment = document.querySelector('#error').content;
   const error = errorFragment.querySelector('.error');
   const messageError = error.cloneNode(true);

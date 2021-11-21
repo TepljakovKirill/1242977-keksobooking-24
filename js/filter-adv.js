@@ -1,10 +1,10 @@
 import { debounce } from './utils/debounce.js';
-import { drowMarkers } from './leaflet.js';
+import { getSelectMarkers } from './leaflet.js';
 
 const filter = {};
 filter.features = new Set();
 
-function filtredArr(adv, filterArr) {
+const getFilterArray = (adv, filterArr) => {
   const offer = adv.offer;
   let match = 0;
   filterArr.features.forEach((feature) => {
@@ -26,10 +26,6 @@ function filtredArr(adv, filterArr) {
       if (key !== 'features') {
         switch (key) {
           case 'rooms':
-            if (offer[key] !== 'any' && filterArr[key] > offer[key]) {
-              return false;
-            }
-            break;
           case 'guests':
             if (offer[key] !== 'any' && filterArr[key] > offer[key]) {
               return false;
@@ -65,14 +61,15 @@ function filtredArr(adv, filterArr) {
   }
 
   return true;
-}
+};
 
-function filterAdv(data, filterArr) {
-  const resultData = data.filter((adv) => filtredArr(adv, filterArr));
-  drowMarkers(resultData.slice(0,10));
+const getAdvanceFilter = (data, filterArr) => {
+  const resultData = data.filter((adv) => getFilterArray(adv, filterArr));
+  getSelectMarkers(resultData.slice(0, 10));
   return resultData;
-}
-const debounceFliterAdv = debounce((data)=>filterAdv(data, filter),1000);
+};
+
+const debounceFilterAdv = debounce((data)=>getAdvanceFilter(data, filter),1000);
 
 function getFilterCheck(evt, data) {
   const currentElement = evt.target;
@@ -95,6 +92,6 @@ function getFilterCheck(evt, data) {
       filter.features.delete(currentElement.previousElementSibling.value);
     }
   }
-  debounceFliterAdv(data, filter);
+  debounceFilterAdv(data, filter);
 }
 export {getFilterCheck};

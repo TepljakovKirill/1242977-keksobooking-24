@@ -6,7 +6,7 @@ const capacitySelect = document.querySelector('#capacity');
 const roomsSelect = document.querySelector('#room_number');
 const capacityArray = Array.from(capacitySelect.options);
 
-function disableCapacity () {
+const disableCapacity = () => {
   const rooms = roomsSelect.options[selectRooms.selectedIndex].value;
   capacityArray.map((option)=> option.disabled = true);
 
@@ -20,14 +20,14 @@ function disableCapacity () {
   if(capacitySelect.options[capacitySelect.selectedIndex].disabled){
     capacitySelect.setCustomValidity('Выберите допустимое значение');
   } else {capacitySelect.setCustomValidity('');}
-}
+};
 
 disableCapacity();
 
 selectRooms.addEventListener('change', disableCapacity);
 capacitySelect.addEventListener('change', disableCapacity);
 
-function showPrice() {
+const showPrice = () => {
   const home = typeHouse.value;
   const price = document.querySelector('#price');
 
@@ -58,16 +58,17 @@ function showPrice() {
       price.min = 10000;
       break;
   }
-}
+};
+
 showPrice();
 typeHouse.addEventListener('change', showPrice);
 
 
-function timeChangeHandler(evt) {
+const timeChangeHandler = (evt) => {
   const sel = evt.target;
   timein.value = sel.options[sel.selectedIndex].value;
   timeout.value = sel.options[sel.selectedIndex].value;
-}
+};
 
 timein.addEventListener('change', timeChangeHandler);
 timeout.addEventListener('change', timeChangeHandler);
