@@ -33,7 +33,7 @@ const onError = () => {
   const error = errorFragment.querySelector('.error');
   const messageError = error.cloneNode(true);
   document.body.appendChild(messageError);
-}
+};
 // функция удаления объявления с ошибкой по клику
 document.addEventListener('click', (evt) => {
   const errorButton = document.querySelector('.error__button');
